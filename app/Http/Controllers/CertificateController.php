@@ -1,14 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
 
-// Request receives information submitted through the certificate form.
+// Request handles information submitted through forms.
 use Illuminate\Http\Request;
+
+// Rule allows us to validate a unique certificate number during updates.
+use Illuminate\Validation\Rule;
 
 // Certificate connects this controller to the certificates table.
 use App\Models\Certificate;
 
-// Customer lets us retrieve customers for the dropdown.
+// Customer provides the customer list for certificate forms.
 use App\Models\Customer;
 
 class CertificateController extends Controller
@@ -45,5 +47,50 @@ class CertificateController extends Controller
         return redirect()
             ->route('certificates.index')
             ->with('success', 'Certificate registered successfully!');
+    }
+
+    // Display the edit form for an existing certificate.
+    public function edit(Certificate $certificate)
+    {
+        $customers = Customer::orderBy('name')->get();
+
+        return view('certificates.edit', compact('certificate', 'customers'));
+    }
+
+    // Validate and update an existing certificate.
+    public function update(Request $request, Certificate $certificate)
+    {
+        $validated = $request->validate([
+            'customer_id' => 'required|exists:customers,id',
+
+            // Ignore this certificate's own number when checking uniqueness.
+            'certificate_number' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('certificates', 'certificate_number')
+                    ->ignore($certificate->id),
+            ],
+
+            'issue_date' => 'required|date',
+            'next_inspection_date' => 'required|date|after_or_equal:issue_date',
+            'booking_url' => 'nullable|url|max:2048',
+        ]);
+
+        $certificate->update($validated);
+
+        return redirect()
+            ->route('certificates.index')
+            ->with('success', 'Certificate updated successfully!');
+    }
+
+    // Delete a certificate and its associated reminder records.
+    public function destroy(Certificate $certificate)
+    {
+        $certificate->delete();
+
+        return redirect()
+            ->route('certificates.index')
+            ->with('success', 'Certificate deleted successfully!');
     }
 }

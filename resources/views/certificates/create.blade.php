@@ -1,75 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Certificate - CertTrack</title>
-</head>
-<body>
+{{-- Reuse the shared CertTrack dashboard layout. --}}
+@extends('layouts.app')
 
-    <h1>Register Inspection Certificate</h1>
+@section('title', 'Register Certificate | CertTrack')
+@section('page-heading', 'Register Certificate')
+@section('page-subtitle', 'Add an inspection certificate and connect it to a customer.')
 
-    @if ($errors->any())
-        <div>
-            <strong>Please correct these errors:</strong>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('content')
+<div class="card">
+    <h2>Certificate Information</h2>
 
     @if ($customers->isEmpty())
-        <p>Please register a customer before adding a certificate.</p>
-        <a href="{{ route('customers.create') }}">Register Customer</a>
+        <p>No customers are registered yet. Register a customer before adding a certificate.</p>
+        <a href="{{ route('customers.create') }}" class="btn-primary">Register Customer</a>
     @else
-
         <form action="{{ route('certificates.store') }}" method="POST">
             @csrf
 
-            <label for="customer_id">Select Customer:</label>
-            <select name="customer_id" id="customer_id" required>
-                <option value="">Choose a customer</option>
-                @foreach ($customers as $customer)
-                    <option value="{{ $customer->id }}"
-                        {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
-                        {{ $customer->name }} - {{ $customer->phone }}
-                    </option>
-                @endforeach
-            </select>
-            <br><br>
+            <div class="form-group">
+                <label for="customer_id">Customer</label>
+                <select name="customer_id" id="customer_id" required>
+                    <option value="">Choose a customer</option>
+                    @foreach ($customers as $customer)
+                        <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
+                            {{ $customer->name }} - {{ $customer->phone }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-            <label for="certificate_number">Certificate Number:</label>
-            <input type="text" id="certificate_number"
-                   name="certificate_number"
-                   value="{{ old('certificate_number') }}" required>
-            <br><br>
+            <div class="form-group">
+                <label for="certificate_number">Certificate Number</label>
+                <input type="text" id="certificate_number" name="certificate_number" value="{{ old('certificate_number') }}" required>
+            </div>
 
-            <label for="issue_date">Issue Date:</label>
-            <input type="date" id="issue_date"
-                   name="issue_date"
-                   value="{{ old('issue_date') }}" required>
-            <br><br>
+            <div class="form-group">
+                <label for="issue_date">Issue Date</label>
+                <input type="date" id="issue_date" name="issue_date" value="{{ old('issue_date') }}" required>
+            </div>
 
-            <label for="next_inspection_date">Next Inspection Date:</label>
-            <input type="date" id="next_inspection_date"
-                   name="next_inspection_date"
-                   value="{{ old('next_inspection_date') }}" required>
-            <br><br>
+            <div class="form-group">
+                <label for="next_inspection_date">Next Inspection Date</label>
+                <input type="date" id="next_inspection_date" name="next_inspection_date" value="{{ old('next_inspection_date') }}" required>
+            </div>
 
-            <label for="booking_url">External Booking URL (optional):</label>
-            <input type="url" id="booking_url"
-                   name="booking_url"
-                   value="{{ old('booking_url') }}">
-            <br><br>
+            <div class="form-group">
+                <label for="booking_url">External Booking URL (optional)</label>
+                <input type="url" id="booking_url" name="booking_url" value="{{ old('booking_url') }}" placeholder="https://example.com">
+            </div>
 
-            <button type="submit">Register Certificate</button>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Register Certificate</button>
+                <a href="{{ route('certificates.index') }}" class="edit-button">Cancel</a>
+            </div>
         </form>
-
     @endif
-
-    <p><a href="{{ route('certificates.index') }}">View Certificates</a></p>
-
-</body>
-</html>
+</div>
+@endsection

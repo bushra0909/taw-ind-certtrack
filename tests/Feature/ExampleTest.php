@@ -1,18 +1,25 @@
 <?php
-
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+// RefreshDatabase prepares a clean test database for each test.
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function test_the_application_returns_a_successful_response(): void
+    // Use the temporary test database, not your actual MySQL database.
+    use RefreshDatabase;
+
+    public function test_homepage_redirects_to_customers(): void
     {
         $response = $this->get('/');
+
+        $response->assertRedirect('/customers');
+    }
+
+    public function test_customer_management_page_loads(): void
+    {
+        $response = $this->get('/customers');
 
         $response->assertStatus(200);
     }

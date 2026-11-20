@@ -1,55 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates - CertTrack</title>
-</head>
-<body>
+{{-- Reuse the shared CertTrack dashboard layout. --}}
+@extends('layouts.app')
 
-    <h1>Registered Certificates</h1>
+@section('title', 'Certificates | CertTrack')
+@section('page-heading', 'Certificate Management')
+@section('page-subtitle', 'Manage inspection certificates and monitor upcoming renewals.')
 
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
+@section('content')
+<div class="page-actions">
+    <div>
+        <h2>Registered Certificates</h2>
+        <p>Total records: {{ $certificates->count() }}</p>
+    </div>
+    <a href="{{ route('certificates.create') }}" class="add-button">+ Register Certificate</a>
+</div>
 
-    <p><a href="{{ route('certificates.create') }}">Register New Certificate</a></p>
-    <p><a href="{{ route('customers.index') }}">View Customers</a></p>
+<div class="card">
+    <input type="search" id="tableSearch" placeholder="Search certificates..." aria-label="Search certificates">
 
-    @if ($certificates->isEmpty())
-        <p>No certificates registered yet.</p>
-    @else
-        <table border="1" cellpadding="8">
+    <div class="table-wrapper">
+        <table>
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Certificate Number</th>
                     <th>Customer</th>
-                    <th>Phone</th>
                     <th>Issue Date</th>
                     <th>Next Inspection</th>
-                    <th>Booking Link</th>
+                    <th>Renewal Status</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($certificates as $certificate)
+                @forelse ($certificates as $certificate)
+                    @php($renewalStatus = $certificate->renewalStatus())
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $certificate->certificate_number }}</td>
-                        <td>{{ $certificate->customer->name }}</td>
-                        <td>{{ $certificate->customer->phone }}</td>
+                        <td>{{ $certificate->customer?->name ?? 'Customer unavailable' }}</td>
                         <td>{{ $certificate->issue_date->format('d M Y') }}</td>
                         <td>{{ $certificate->next_inspection_date->format('d M Y') }}</td>
                         <td>
-                            @if ($certificate->booking_url)
-                                <a href="{{ $certificate->booking_url }}" target="_blank" rel="noopener noreferrer">Book Inspection</a>
+                            @if ($renewalStatus === 'Overdue')
+                                <span class="status status-danger">Overdue</span>
+                            @elseif ($renewalStatus === 'Due Soon')
+                                <span class="status status-warning">Due Soon</span>
                             @else
-                                Not provided
+                                <span class="status status-success">Up to Date</span>
                             @endif
                         </td>
+                        <td>
+                            <div class="actions">
+                                <a href="{{ route('certificates.edit', $certificate) }}" class="edit-button">Edit</a>
+                                <form action="{{ route('certificates.destroy', $certificate) }}" method="POST" data-confirm="Delete this certificate and its reminder records? This cannot be undone.">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr><td colspan="7">No certificates registered yet.</td></tr>
+                @endforelse
             </tbody>
         </table>
-    @endif
+    </div>
+</div>
 
-</body>
-</html>
+@endsection

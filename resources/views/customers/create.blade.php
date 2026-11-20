@@ -1,57 +1,91 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Customer - CertTrack</title>
-</head>
-<body>
+{{-- Use the shared CertTrack dashboard layout. --}}
+@extends('layouts.app')
 
-    <h1>Register New Customer</h1>
+{{-- Browser tab title. --}}
+@section('title', 'Register Customer | CertTrack')
 
-    <!-- Display validation errors if the form contains incorrect information. -->
-    @if ($errors->any())
-        <div>
-            <strong>Please correct these errors:</strong>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+{{-- Dashboard heading and description. --}}
+@section('page-heading', 'Register Customer')
+@section('page-subtitle', 'Add a new customer to your certificate management system.')
 
-    <!-- Display success message when a customer is registered. -->
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
+{{-- Main page content. --}}
+@section('content')
 
-    <!-- Send customer information to the Laravel controller. -->
-    <form action="{{ route('customers.store') }}" method="POST">
-        @csrf
+    <div class="card">
 
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name"
-               value="{{ old('name') }}" required>
-        <br><br>
+        <h2>Customer Information</h2>
 
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone"
-               value="{{ old('phone') }}" required>
-        <br><br>
+        <p>Enter the customer's details below to create a new record.</p>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email"
-               value="{{ old('email') }}">
-        <br><br>
+        {{-- Send customer information to CustomerController. --}}
+        <form action="{{ route('customers.store') }}" method="POST">
+            @csrf
 
-        <label for="address">Address:</label>
-        <textarea id="address" name="address">{{ old('address') }}</textarea>
-        <br><br>
+            {{-- Customer full name. --}}
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ old('name') }}"
+                    placeholder="Enter customer's full name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
 
-        <button type="submit">Register Customer</button>
-    </form>
+            {{-- Customer phone number. --}}
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value="{{ old('phone') }}"
+                    placeholder="Enter phone number"
+                    autocomplete="tel"
+                    required
+                >
+            </div>
 
-</body>
-</html>
+            {{-- Customer email address (optional). --}}
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    placeholder="Enter email address"
+                    autocomplete="email"
+                >
+            </div>
+
+            {{-- Customer postal address (optional). --}}
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter customer's address"
+                >{{ old('address') }}</textarea>
+            </div>
+
+            {{-- Form actions. --}}
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    Register Customer
+                </button>
+
+                <a href="{{ route('customers.index') }}" class="edit-button">
+                    Cancel
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+@endsection

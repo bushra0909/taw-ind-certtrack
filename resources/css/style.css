@@ -1,0 +1,1002 @@
+
+/* ==========================================
+   CERTTRACK
+   COMPLETE PROFESSIONAL STYLESHEET
+   ========================================== */
+
+/* 1. GLOBAL SETTINGS */
+
+:root {
+    --primary: #2864e8;
+    --primary-dark: #174fc5;
+    --navy: #14213d;
+    --navy-light: #29436b;
+    --background: #f4f6fb;
+    --surface: #ffffff;
+    --text: #26344a;
+    --heading: #17243c;
+    --muted: #8490a3;
+    --border: #e5eaf2;
+    --success: #167847;
+    --danger: #c02e2e;
+    --warning: #a66a12;
+    --radius: 10px;
+    --shadow: 0 5px 22px rgba(20, 33, 61, .045);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+a {
+    color: var(--primary);
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* ==========================================
+   2. APPLICATION LAYOUT
+   ========================================== */
+
+.app-body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.app-layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main-area {
+    flex: 1 1 auto;
+    width: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==========================================
+   3. SIDEBAR
+   ========================================== */
+
+.sidebar {
+    flex: 0 0 260px;
+    width: 260px;
+    min-width: 260px;
+    min-height: 100vh;
+    padding: 30px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    background: var(--navy);
+    color: #ffffff;
+}
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 5px 0 42px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.brand-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #3478f6;
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.brand-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.brand-text strong {
+    display: block;
+    margin: 0;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -.4px;
+    white-space: nowrap;
+}
+
+.brand-text span {
+    display: block;
+    color: #b9c8df;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* SIDEBAR LABEL */
+
+.sidebar-label {
+    padding: 0 12px 17px;
+    color: #91a5c5;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+/* NAVIGATION */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 47px;
+    padding: 0 14px;
+    border-radius: 9px;
+    color: #d0dbea;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.sidebar-nav a:hover {
+    background: #213657;
+    color: #ffffff;
+}
+
+.sidebar-nav a.active {
+    background: var(--navy-light);
+    color: #ffffff;
+    border-left: 3px solid #5795ff;
+    padding-left: 11px;
+}
+
+.nav-icon {
+    font-size: 17px;
+}
+
+/* SIDEBAR BOTTOM */
+
+.sidebar-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding: 18px 10px;
+    border-top: 1px solid #344664;
+}
+
+.sidebar-bottom-icon {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #203b5d;
+    color: #8bb9ff;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.sidebar-bottom-text {
+    min-width: 0;
+}
+
+.sidebar-bottom-text strong {
+    display: block;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sidebar-bottom-text span {
+    display: block;
+    margin-top: 5px;
+    color: #aebed5;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   4. TOP HEADER
+   ========================================== */
+
+.topbar {
+    min-height: 115px;
+    padding: 23px 45px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.topbar-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #8290a5;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.topbar-heading h1 {
+    margin: 0;
+    color: var(--heading);
+    font-size: 30px;
+    font-weight: 750;
+    letter-spacing: -.6px;
+}
+
+.topbar-heading p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 17px;
+    background: #eff9f3;
+    border: 1px solid #d8f0e1;
+    border-radius: 30px;
+    color: #268452;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.online-dot {
+    width: 9px;
+    height: 9px;
+    background: #20b26b;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(32, 178, 107, .12);
+}
+
+
+/* ==========================================
+   5. PAGE CONTENT
+   ========================================== */
+
+.page-content {
+    flex: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 40px 45px;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.page-actions h2 {
+    margin: 0 0 9px;
+    color: var(--heading);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.page-actions p {
+    margin: 6px 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   6. CARDS AND CONTAINERS
+   ========================================== */
+
+.page-content .card,
+.page-content .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+
+/* ==========================================
+   7. BUTTONS
+   ========================================== */
+
+.page-content button,
+.page-content .btn,
+.page-content .add-button,
+.page-content .edit-button,
+.page-content .archive-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.page-content .add-button,
+.page-content .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.page-content .add-button:hover,
+.page-content .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.page-content .edit-button {
+    background: #eaf1ff;
+    color: #2459c5;
+}
+
+.page-content .edit-button:hover {
+    background: #d8e5ff;
+}
+
+.page-content .archive-button {
+    background: #fff0f0;
+    color: var(--danger);
+}
+
+.page-content .archive-button:hover {
+    background: #ffdddd;
+}
+
+
+/* ==========================================
+   8. TABLES
+   ========================================== */
+
+.page-content .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+.page-content table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+}
+
+.page-content th {
+    padding: 17px 15px;
+    background: #f3f6fb;
+    color: #53647d;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e4eaf2;
+}
+
+.page-content td {
+    padding: 18px 15px;
+    color: #334155;
+    font-size: 14px;
+    border-bottom: 1px solid #edf0f5;
+    line-height: 1.5;
+}
+
+.page-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.page-content tbody tr:hover {
+    background: #f8faff;
+}
+
+
+/* ==========================================
+   9. STATUS BADGES
+   ========================================== */
+
+.page-content .active,
+.page-content .archived {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.page-content .active {
+    background: #dcf8e8;
+    color: #167847;
+}
+
+.page-content .archived {
+    background: #edf0f5;
+    color: #586579;
+}
+
+.page-content .status,
+.page-content .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.page-content .status-success {
+    background: #dcf8e8;
+    color: #167847;
+}
+
+.page-content .status-warning {
+    background: #fff4d8;
+    color: #946200;
+}
+
+.page-content .status-danger {
+    background: #fff0f0;
+    color: #c02e2e;
+}
+
+
+/* ==========================================
+   10. ACTIONS
+   ========================================== */
+
+.page-content .actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.page-content .actions form {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   11. FORMS
+   ========================================== */
+
+.page-content form:not([data-inline-form]) {
+    max-width: 850px;
+}
+
+.page-content label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34445b;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.page-content input,
+.page-content select,
+.page-content textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 43px;
+    padding: 12px 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.page-content textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.page-content input:focus,
+.page-content select:focus,
+.page-content textarea:focus {
+    outline: none;
+    border-color: #3478f6;
+    box-shadow: 0 0 0 3px rgba(52, 120, 246, .12);
+}
+
+.page-content input::placeholder,
+.page-content textarea::placeholder {
+    color: #9aa6b8;
+}
+
+
+/* ==========================================
+   12. SEARCH FIELD
+   ========================================== */
+
+.page-content #tableSearch {
+    display: block;
+    width: 100%;
+    max-width: none;
+    min-height: 47px;
+    margin: 0 0 25px;
+    padding: 12px 16px;
+    background: #fbfcfe;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   13. ALERTS
+   ========================================== */
+
+.page-content .success {
+    padding: 14px 17px;
+    margin-bottom: 22px;
+    background: #eaf8f0;
+    color: #167548;
+    border: 1px solid #c8ecd8;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.page-content .error {
+    padding: 14px 17px;
+    margin-bottom: 22px;
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #f4cccc;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.page-content .error p {
+    margin: 6px 0;
+}
+
+
+/* ==========================================
+   14. FOOTER
+   ========================================== */
+
+.app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 19px 45px;
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+    color: #8994a6;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   15. RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        flex-basis: 235px;
+        width: 235px;
+        min-width: 235px;
+    }
+
+    .topbar {
+        padding: 22px 28px;
+    }
+
+    .page-content {
+        padding: 30px 28px;
+    }
+
+    .app-footer {
+        padding: 18px 28px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .brand {
+        padding: 0 5px 18px;
+    }
+
+    .brand-icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+        font-size: 24px;
+    }
+
+    .brand-text strong {
+        font-size: 21px;
+    }
+
+    .sidebar-label,
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .sidebar-nav a {
+        flex: 1 1 auto;
+        justify-content: center;
+        min-height: 42px;
+        padding: 8px;
+    }
+
+    .sidebar-nav a.active {
+        padding-left: 5px;
+    }
+
+    .topbar {
+        min-height: auto;
+        padding: 23px 18px;
+        align-items: flex-start;
+    }
+
+    .topbar-heading h1 {
+        font-size: 24px;
+    }
+
+    .topbar-heading p {
+        line-height: 1.5;
+    }
+
+    .topbar-status {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .page-content {
+        padding: 22px 14px;
+    }
+
+    .page-content .card,
+    .page-content .container {
+        padding: 16px;
+    }
+
+    .page-actions {
+        align-items: flex-start;
+    }
+
+    .page-actions h2 {
+        font-size: 21px;
+    }
+
+    .app-footer {
+        padding: 16px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .topbar {
+        flex-direction: column;
+    }
+
+    .topbar-status {
+        align-self: flex-start;
+    }
+
+    .sidebar-nav a {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================
+   CERTTRACK - TABLE READABILITY UPGRADE
+   ========================================== */
+
+.page-content > .card {
+    width: 100%;
+    max-width: none;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e1e7f0;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(20, 33, 61, .06);
+}
+
+.page-content .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e5eaf2;
+    border-radius: 12px;
+}
+
+.page-content table {
+    width: 100%;
+    min-width: 1050px;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.page-content th {
+    padding: 20px 18px;
+    background: #edf2fa;
+    color: #34445d;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: .65px;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 2px solid #dce4ef;
+}
+
+.page-content td {
+    padding: 22px 18px;
+    color: #26364d;
+    font-size: 15px;
+    font-weight: 450;
+    line-height: 1.6;
+    vertical-align: middle;
+    border-bottom: 1px solid #e8edf4;
+}
+
+.page-content tbody tr {
+    transition: background .18s ease;
+}
+
+.page-content tbody tr:hover {
+    background: #f3f7ff;
+}
+
+.page-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Give customer names stronger emphasis */
+.page-content tbody td:nth-child(2) {
+    color: #17243c;
+    font-weight: 650;
+}
+
+/* Comfortable action buttons */
+.page-content .actions {
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.page-content .actions button,
+.page-content .actions .edit-button,
+.page-content .actions .archive-button {
+    min-height: 39px;
+    padding: 9px 15px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Larger search field */
+.page-content #tableSearch {
+    min-height: 52px;
+    padding: 14px 17px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    border: 1px solid #dce4ef;
+    border-radius: 10px;
+}
+
+/* More prominent status labels */
+.page-content .active,
+.page-content .archived {
+    padding: 7px 13px;
+    font-size: 13px;
+}
+
+/* Smaller screens */
+@media (max-width: 700px) {
+    .page-content > .card {
+        padding: 16px;
+    }
+
+    .page-content th {
+        padding: 15px 13px;
+    }
+
+    .page-content td {
+        padding: 17px 13px;
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   CERTTRACK - READABILITY IMPROVEMENTS
+   ========================================== */
+
+/* General page text */
+body {
+    font-size: 16px !important;
+}
+
+/* Main dashboard headings */
+.topbar-heading h1,
+.page-content h1 {
+    font-size: 32px !important;
+    font-weight: 750 !important;
+}
+
+.page-content h2 {
+    font-size: 23px !important;
+}
+
+/* Dashboard descriptions */
+.topbar-heading p,
+.page-content p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+/* Sidebar navigation */
+.sidebar-nav a {
+    font-size: 16px !important;
+    padding: 15px 18px !important;
+}
+
+/* Top navigation links on older pages */
+nav a {
+    font-size: 16px !important;
+}
+
+/* Table headings */
+table th {
+    font-size: 15px !important;
+    padding: 19px 17px !important;
+    font-weight: 700 !important;
+}
+
+/* Table content */
+table td {
+    font-size: 16px !important;
+    padding: 20px 17px !important;
+    line-height: 1.6 !important;
+}
+
+/* Form labels */
+.page-content label {
+    font-size: 16px !important;
+    font-weight: 650 !important;
+}
+
+/* Form fields */
+.page-content input,
+.page-content select,
+.page-content textarea {
+    font-size: 16px !important;
+    min-height: 46px;
+    padding: 12px 14px !important;
+}
+
+/* Buttons and action links */
+.page-content button,
+.page-content .btn,
+.page-content .add-button,
+.page-content .edit-button,
+.page-content .archive-button {
+    font-size: 15px !important;
+    padding: 12px 17px !important;
+}
+
+/* Dashboard cards */
+.page-content .card {
+    padding: 30px !important;
+}
+
+/* Table rows */
+table tbody tr {
+    min-height: 60px;
+}
+
+/* Smaller screens */
+@media (max-width: 700px) {
+    .topbar-heading h1,
+    .page-content h1 {
+        font-size: 26px !important;
+    }
+
+    table th,
+    table td {
+        font-size: 14px !important;
+        padding: 13px 12px !important;
+    }
+}
+
+
+
+/* Destructive actions should remain visually distinct from normal actions. */
+.delete-button {
+    display: inline-block;
+    padding: 9px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 7px;
+    background: #fee2e2;
+    color: #991b1b;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.delete-button:hover { background: #fecaca; }
