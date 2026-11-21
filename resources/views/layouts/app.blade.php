@@ -87,9 +87,22 @@
 
             </div>
 
-            <div class="topbar-status">
-                <span class="online-dot"></span>
-                System Online
+            <!-- ADMINISTRATOR ACCOUNT -->
+            <div class="topbar-account">
+
+                <div class="admin-info">
+                    <strong>{{ auth()->user()->name }}</strong>
+                    <span>Administrator</span>
+                </div>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <button type="submit" class="logout-button">
+                        Sign Out
+                    </button>
+                </form>
+
             </div>
 
         </header>

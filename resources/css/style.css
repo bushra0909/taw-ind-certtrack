@@ -1000,3 +1000,148 @@ table tbody tr {
     cursor: pointer;
 }
 .delete-button:hover { background: #fecaca; }
+
+/* ========================================
+   ADMIN LOGIN PAGE
+   Styles for the CertTrack login screen.
+======================================== */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-brand .brand-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.login-brand h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+.login-brand p,
+.login-heading p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.login-heading {
+    margin-bottom: 24px;
+}
+
+.login-heading h2 {
+    margin-bottom: 8px;
+    font-size: 21px;
+}
+
+.login-card .form-group {
+    margin-bottom: 18px;
+}
+
+.login-card .form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.login-card .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.login-card .form-group input:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+.remember-option {
+    margin: 15px 0 20px;
+    font-size: 14px;
+}
+
+.remember-option label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.login-footer {
+    margin-top: 22px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Administrator account in the top header */
+.topbar-account {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.admin-info strong {
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.admin-info span {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.logout-button {
+    padding: 9px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #334155;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background: #f1f5f9;
+}
