@@ -8,6 +8,12 @@ Watch the project demonstration:
 
 [**Watch CertTrack on Loom**](https://www.loom.com/share/28c6652033e34e368d661573b367c64c)
 
+**Note:** The “Prepare Reminders” feature was added after the Loom video was recorded, so this functionality is not demonstrated in the video. The current application includes this feature.
+
+## Live Deployment
+
+[Open CertTrack](https://taw-ind-certtrack-production.up.railway.app)
+
 ## Application Screenshots
 
 ### 1. Dashboard
@@ -221,3 +227,10 @@ Visit:
 ## License
 
 none
+
+### Future Improvements
+
+- **Multi-Administrator Management:** Allow the primary administrator to create, manage, and deactivate accounts for other authorized administrators.
+- **Secure Password Reset:** Add a password recovery feature so administrators can reset forgotten passwords securely.
+- **Role-Based Access Control:** Introduce different permission levels for administrators and staff members.
+- **Automated SMS Reminders:** Integrate a suitable SMS provider and schedule automatic certificate renewal reminders.
